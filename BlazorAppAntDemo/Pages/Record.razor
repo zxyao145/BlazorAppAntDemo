@@ -1,0 +1,52 @@
+﻿<Template>
+  <Collapse DefaultActiveKey="@(new[] { "1" })"
+            OnChange="this.Callback"
+            ExpandIconPosition="@this.ExpandIconPosition"
+            ExpandIcon="caret-right">
+    <Panel Header="Basic information" Key="1">
+      <Form Layout="FormLayout.Horizontal" Model="this">
+        <FormItem Label="Record title">
+          <Input @bind-Value="@this.Title" />
+        </FormItem>
+        <FormItem Label="Description">
+          <Input @bind-Value="@this.Description" />
+        </FormItem>
+        <FormItem Label="Date">
+          <DatePicker @bind-Value="@this.SelectedDate" ShowTime="@true" OnChange="this.OnDateSelected" />
+        </FormItem>
+      </Form>
+    </Panel>
+    <Panel Header="Personell" Key="2">
+      <ChildContent>
+        <Button OnClick="this.AddNew" Type="primary" Style="margin-bottom:16px">
+          Add person
+        </Button>
+        <Table DataSource="this.PersonellData" RowClassName="@(_=>"editable-row")" Bordered Size=@TableSize.Small>
+          <Column Title="Id" DataIndex="@nameof(context.Id)" TData="int"></Column>
+          <Column Title="Name" DataIndex="@nameof(context.Name)" TData="string"></Column>
+          <Column Title="From" TData="DateTime">
+            <TimePicker TValue="DateTime?" Value="@context.From" />
+          </Column>
+          <Column Title="Category" DataIndex="@nameof(context.Category)" TData="string">
+            <Select DataSource="@this.CategoryList"
+                    @bind-Value="@this.selectedCategoryValue"
+                    OnSelectedItemChanged="this.OnSelectedItemChangedHandler">
+            </Select>
+          </Column>
+          <ActionColumn Title="Action">
+            <Popconfirm Title="Sure to delete?"
+                        OnConfirm="()=> this.Delete(context.Id)"
+                        OkText="Yes"
+                        CancelText="No">
+              <Button Danger>Delete</Button>
+            </Popconfirm>
+          </ActionColumn>
+        </Table>
+      </ChildContent>
+    </Panel>
+  </Collapse>
+</Template>
+
+@code {
+
+}

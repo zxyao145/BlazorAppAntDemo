@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<br />
+<br />
+
+<Space>
+  <SpaceItem>
+    <Button Type="primary" OnClick="@(()=>{ this.isDialogVisible = true; })">
+      Add Record
+    </Button>
+  </SpaceItem>
+</Space>
+
+<Modal Title="Create new record"
+       Style="width:50%"
+       Visible="@this.isDialogVisible"
+       Footer="null"
+       Draggable="@(true)"
+       OnCancel="(e)=>{this.isDialogVisible = false;}">
+  <Form Model="this.DiaryRecordModel"
+        OnFinish="(e) => this.OnCreateNewDiaryRecord()">
+    <FormItem>
+      <Record Description="@context.Description"
+              SelectedDate="this.SelectedDate"
+              Title="@context.Title" />
+    </FormItem>
+    <FormItem WrapperColOffset="8" WrapperColSpan="16">
+      <Button Type="@ButtonType.Primary" HtmlType="submit">
+        Submit
+      </Button>
+      <Button OnClick="(e)=>{this.isDialogVisible = false;}">Cancel</Button>
+    </FormItem>
+  </Form>
+</Modal>
