@@ -24,8 +24,8 @@
         <Table DataSource="this.PersonellData" RowClassName="@(_=>"editable-row")" Bordered Size=@TableSize.Small>
           <Column Title="Id" DataIndex="@nameof(context.Id)" TData="int"></Column>
           <Column Title="Name" DataIndex="@nameof(context.Name)" TData="string"></Column>
-          <Column Title="From" TData="DateTime">
-            <TimePicker TValue="DateTime?" Value="@context.From" />
+          <Column Title="From" TData="DateTime" >
+            <TimePicker TValue="DateTime?" @bind-Value="@context.From" />
           </Column>
           <Column Title="Category" DataIndex="@nameof(context.Category)" TData="string">
             <Select DataSource="@this.CategoryList"
