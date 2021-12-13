@@ -2,6 +2,7 @@
 using BlazorAppAntDemo.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 
 namespace BlazorAppAntDemo.Pages
 {
@@ -9,6 +10,10 @@ namespace BlazorAppAntDemo.Pages
   {
     [Inject]
     private MessageService Message { get; set; }
+
+    [Inject]
+    private NotificationService Notice { get; set; }
+
     private string ExpandIconPosition { get; set; }
     private int i = 1;
     private List<string> CategoryList { get; set; } 
@@ -79,11 +84,6 @@ namespace BlazorAppAntDemo.Pages
 
     }
 
-    private async Task Error(string message)
-    {
-      await Message.Error(message, 5);
-    }
-
     private async Task OnFileSelection(InputFileChangeEventArgs e)
     {
       foreach (IBrowserFile file in e.GetMultipleFiles(this.maxFileSize))
@@ -105,7 +105,14 @@ namespace BlazorAppAntDemo.Pages
         }
         else
         {
-          await this.Error("File is too big!");
+          await Message.Error("File is too large!", 5);
+
+          await this.Notice.Open(new NotificationConfig()
+          {
+            Message = "title",
+            Duration = 0,
+            Description = "File is too large!"
+          });
         }
       }
     }

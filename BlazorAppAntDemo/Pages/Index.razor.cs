@@ -1,9 +1,14 @@
-﻿using BlazorAppAntDemo.Models;
+﻿using AntDesign;
+using BlazorAppAntDemo.Models;
+using Microsoft.AspNetCore.Components;
 
 namespace BlazorAppAntDemo.Pages
 {
   public partial class Index
   {
+    [Inject]
+    public MessageService Message { get; set; }
+
     private DiaryRecord DiaryRecordModel { get; set; }
     private bool isDialogVisible;
     private DateTime SelectedDate { get; set; }
@@ -26,6 +31,11 @@ namespace BlazorAppAntDemo.Pages
         await OnInitializedAsync();
       }
       isDialogVisible = false;
+    }
+
+    private async Task Success()
+    {
+      await this.Message.Success("This is a success message");
     }
   }
 }
