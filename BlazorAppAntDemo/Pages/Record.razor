@@ -4,7 +4,7 @@
             ExpandIconPosition="@this.ExpandIconPosition"
             ExpandIcon="caret-right">
     <Panel Header="Basic information" Key="1">
-      <Form Layout="FormLayout.Horizontal" Model="this">
+      <Form Model="this" LabelColSpan="8" WrapperColSpan="16">
         <FormItem Label="Record title">
           <Input @bind-Value="@this.Title" />
         </FormItem>
@@ -24,7 +24,7 @@
         <Table DataSource="this.PersonellData" RowClassName="@(_=>"editable-row")" Bordered Size=@TableSize.Small>
           <Column Title="Id" DataIndex="@nameof(context.Id)" TData="int"></Column>
           <Column Title="Name" DataIndex="@nameof(context.Name)" TData="string"></Column>
-          <Column Title="From" TData="DateTime" >
+          <Column Title="From" TData="DateTime">
             <TimePicker TValue="DateTime?" @bind-Value="@context.From" />
           </Column>
           <Column Title="Category" DataIndex="@nameof(context.Category)" TData="string">
@@ -42,6 +42,40 @@
             </Popconfirm>
           </ActionColumn>
         </Table>
+      </ChildContent>
+    </Panel>
+    <Panel Header="Attachments" Key="3">
+      <ChildContent>
+
+
+        <span class="ant-upload-picture-card-wrapper">
+          <label class="avatar-uploader" for="upload">
+            <div class="ant-upload ant-upload-select-picture-card ant-upload-select">
+              <div tabindex="0" class="ant-upload" style="position:relative;">
+                <InputFile OnChange="@this.OnFileSelection" multiple id="upload" hidden accept=".png,.jpg,.jpeg,.gif" />
+                <div class="row">
+                  @if (this.ImgUrls.Any())
+                  {
+                    @foreach (var url in this.ImgUrls)
+                    {
+                      <div>
+                        <img src="@url" alt="avatar" style="width: 100%" />
+                      </div>
+                    }
+                  }
+                  else
+                  {
+                    <div>
+                      <Icon Spin="this.loading" Type="@(this.loading?"Loading":"plus")"></Icon>
+                      <div className="ant-upload-text">Upload</div>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </label>
+        </span>
+
       </ChildContent>
     </Panel>
   </Collapse>
