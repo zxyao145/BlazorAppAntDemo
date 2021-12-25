@@ -31,9 +31,7 @@ Welcome to your new app.
   <Form Model="this.DiaryRecordModel"
         OnFinish="(e) => this.OnCreateNewDiaryRecord()">
     <FormItem>
-      <Record Description="@context.Description"
-              SelectedDate="this.SelectedDate"
-              Title="@context.Title" />
+      <Record DiaryRecord=this.DiaryRecordModel />
     </FormItem>
     <FormItem WrapperColOffset="8" WrapperColSpan="16">
       <Button Type="@ButtonType.Primary" HtmlType="submit">

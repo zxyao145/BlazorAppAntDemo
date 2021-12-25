@@ -5,14 +5,14 @@
             ExpandIcon="caret-right">
     <Panel Header="Basic information" Key="1">
       <Form Model="this" LabelColSpan="8" WrapperColSpan="16">
-        <FormItem Label="Record title">
-          <Input @bind-Value="@this.Title" />
+        <FormItem Label="Record title" NoStyle>
+          <Input @bind-Value="@this.DiaryRecord.Title" />
         </FormItem>
-        <FormItem Label="Description">
-          <Input @bind-Value="@this.Description" />
+        <FormItem Label="Description" NoStyle>
+          <Input @bind-Value="@this.DiaryRecord.Description" />
         </FormItem>
-        <FormItem Label="Date">
-          <DatePicker @bind-Value="@this.SelectedDate" ShowTime="@true" OnChange="this.OnDateSelected" />
+        <FormItem Label="Date" NoStyle>
+          <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
         </FormItem>
       </Form>
     </Panel>

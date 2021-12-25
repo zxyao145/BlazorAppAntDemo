@@ -8,11 +8,8 @@ namespace BlazorAppAntDemo.Pages
 {
   public partial class Record
   {
-    [Inject]
-    private MessageService Message { get; set; }
-
-    [Inject]
-    private NotificationService Notice { get; set; }
+    [Inject] private MessageService Message { get; set; }
+    [Inject] private NotificationService Notice { get; set; }
 
     private string ExpandIconPosition { get; set; }
     private int i = 1;
@@ -27,14 +24,7 @@ namespace BlazorAppAntDemo.Pages
     private byte[] profilePictureByteArray;
     private bool loading;
 
-    [Parameter]
-    public string Title { get; set; }
-
-    [Parameter]
-    public string Description { get; set; }
-
-    [Parameter]
-    public DateTime SelectedDate { get; set; }
+    [Parameter] public DiaryRecord DiaryRecord { get; set; }
 
     public Record()
     {
@@ -76,7 +66,7 @@ namespace BlazorAppAntDemo.Pages
 
     private void OnDateSelected(DateTimeChangedEventArgs args)
     {
-      this.SelectedDate = args.Date;
+      this.DiaryRecord.Date = args.Date;
     }
 
     private void Callback(string[] keys)

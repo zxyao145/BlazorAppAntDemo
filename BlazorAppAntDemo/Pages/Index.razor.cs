@@ -16,7 +16,7 @@ namespace BlazorAppAntDemo.Pages
     public Index()
     {
       this.DiaryRecordModel = new DiaryRecord();
-      this.SelectedDate = DateTime.Now;
+      this.DiaryRecordModel.Date = DateTime.Now;
     }
 
     protected override void OnInitialized()
@@ -28,6 +28,14 @@ namespace BlazorAppAntDemo.Pages
     {
       if (true)
       {
+        this.DiaryRecordModel = new DiaryRecord
+        {
+          Id = this.DiaryRecordModel.Id,
+          Title = this.DiaryRecordModel.Title,
+          Description = this.DiaryRecordModel.Description,
+          Date = this.SelectedDate,
+        };
+
         await OnInitializedAsync();
       }
       isDialogVisible = false;
