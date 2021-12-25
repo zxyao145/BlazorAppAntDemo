@@ -4,17 +4,15 @@
             ExpandIconPosition="@this.ExpandIconPosition"
             ExpandIcon="caret-right">
     <Panel Header="Basic information" Key="1">
-      <Form Model="this" LabelColSpan="8" WrapperColSpan="16">
-        <FormItem Label="Record title" NoStyle>
-          <Input @bind-Value="@this.DiaryRecord.Title" />
-        </FormItem>
-        <FormItem Label="Description" NoStyle>
-          <Input @bind-Value="@this.DiaryRecord.Description" />
-        </FormItem>
-        <FormItem Label="Date" NoStyle>
-          <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
-        </FormItem>
-      </Form>
+      <FormItem Label="Record title" NoStyle>
+        <Input @bind-Value="@this.DiaryRecord.Title" />
+      </FormItem>
+      <FormItem Label="Description" NoStyle>
+        <Input @bind-Value="@this.DiaryRecord.Description" />
+      </FormItem>
+      <FormItem Label="Date" NoStyle>
+        <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
+      </FormItem>
     </Panel>
     <Panel Header="Personell" Key="2">
       <ChildContent>
