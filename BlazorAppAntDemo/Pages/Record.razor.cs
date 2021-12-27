@@ -55,6 +55,8 @@ namespace BlazorAppAntDemo.Pages
         Category = this.selectedCategoryValue,
       });
 
+      this.DiaryRecord.Employees = new List<Personell>(this.PersonellData);
+
       i++;
     }
 
