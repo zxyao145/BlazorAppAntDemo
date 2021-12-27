@@ -25,7 +25,7 @@
           <Column Title="Id" DataIndex="@nameof(context.Id)" TData="int"></Column>
           <Column Title="Name" DataIndex="@nameof(context.Name)" TData="string"></Column>
           <Column Title="From" TData="DateTime">
-            <TimePicker TValue="DateTime?" @bind-Value="@context.From" />
+            <TimePicker TValue="DateTime?" @bind-Value="@context.From" OnChange="this.OnDateValueChanged" />
           </Column>
           <Column Title="Category" DataIndex="@nameof(context.Category)" TData="string">
             <Select DataSource="@this.CategoryList"
@@ -80,6 +80,21 @@
           </label>
         </span>
 
+      </ChildContent>
+    </Panel>
+    <Panel Header="Another one 1" Key="4">
+      <ChildContent>
+        <h3>Hola</h3>
+      </ChildContent>
+    </Panel>
+    <Panel Header="Another one 2" Key="5">
+      <ChildContent>
+        <h3>Hola 2</h3>
+      </ChildContent>
+    </Panel>
+    <Panel Header="Another one 3" Key="6">
+      <ChildContent>
+        <h3>Hola 3</h3>
       </ChildContent>
     </Panel>
   </Collapse>

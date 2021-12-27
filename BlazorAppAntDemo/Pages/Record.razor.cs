@@ -70,6 +70,11 @@ namespace BlazorAppAntDemo.Pages
       this.selectedCategoryValue = value.CategoryName;
     }
 
+    private void OnDateValueChanged()
+    {
+
+    }
+
     private void OnDateSelected(DateTimeChangedEventArgs args)
     {
       this.DiaryRecord.Date = args.Date;
