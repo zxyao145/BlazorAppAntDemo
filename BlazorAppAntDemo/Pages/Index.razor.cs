@@ -33,6 +33,7 @@ namespace BlazorAppAntDemo.Pages
           Id = this.DiaryRecordModel.Id,
           Title = this.DiaryRecordModel.Title,
           Description = this.DiaryRecordModel.Description,
+          Employees = this.DiaryRecordModel.Employees,
           Date = this.SelectedDate,
         };
 

@@ -13,7 +13,7 @@ namespace BlazorAppAntDemo.Pages
 
     private string ExpandIconPosition { get; set; }
     private int i = 1;
-    private List<string> CategoryList { get; set; } 
+    private List<Category> CategoryList { get; set; } 
     private string selectedCategoryValue;
     private List<Personell> PersonellData { get; set; }
     private List<string> ImgUrls { get; set; }
@@ -30,6 +30,7 @@ namespace BlazorAppAntDemo.Pages
     {
       this.ExpandIconPosition = "left";
       this.PersonellData = new List<Personell>();
+      this.CategoryList = new List<Category>();
       this.ImgUrls = new List<string>();
       this.FileData = new List<FileData>();
       this.maxFileSize = 400000;
@@ -38,7 +39,10 @@ namespace BlazorAppAntDemo.Pages
 
     protected override void OnInitialized()
     {
-      this.CategoryList = new List<string> { { "A" }, { "B" }, { "C" }, { "D" }, { "E" }, };
+      this.CategoryList.Add(new Category { CategoryName = "CategoryA", CategorySymbol = "A" });
+      this.CategoryList.Add(new Category { CategoryName = "CategoryB", CategorySymbol = "B" });
+      this.CategoryList.Add(new Category { CategoryName = "CategoryC", CategorySymbol = "C" });
+      this.CategoryList.Add(new Category { CategoryName = "CategoryD", CategorySymbol = "D" });
     }
 
     private void AddNew()
@@ -47,7 +51,7 @@ namespace BlazorAppAntDemo.Pages
       {
         Id = i + 1,
         Name = "John " + i,
-        From = DateTime.Now,
+        From = DateTime.Today + new TimeSpan(7, 30, 0),
         Category = this.selectedCategoryValue,
       });
 
@@ -59,9 +63,9 @@ namespace BlazorAppAntDemo.Pages
       this.PersonellData = this.PersonellData.Where(d => d.Id != id).ToList();
     }
 
-    private void OnSelectedItemChangedHandler(string value)
+    private void OnSelectedCategoryChangedHandler(Category value)
     {
-      this.selectedCategoryValue = value;
+      this.selectedCategoryValue = value.CategoryName;
     }
 
     private void OnDateSelected(DateTimeChangedEventArgs args)
