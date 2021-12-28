@@ -37,7 +37,7 @@ namespace BlazorAppAntDemo.Pages
           Date = this.SelectedDate,
         };
 
-        await InvokeAsync(StateHasChanged);
+        await InvokeAsync(this.StateHasChanged);
       }
       isDialogVisible = false;
     }
