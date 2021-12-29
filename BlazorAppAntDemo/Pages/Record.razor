@@ -16,38 +16,6 @@
         <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
       </FormItem>
     </Panel>
-    <Panel Header="Personell" Key="2">
-      <ChildContent>
-        <Button OnClick="this.AddNew" Type="primary" Style="margin-bottom:16px">
-          Add person
-        </Button>
-        <Table DataSource="this.PersonellData" RowClassName="@(_=>"editable-row")" Bordered Size=@TableSize.Small>
-          <Column Title="Id" DataIndex="@nameof(context.Id)" TData="int"></Column>
-          <Column Title="Name" DataIndex="@nameof(context.Name)" TData="string"></Column>
-          <Column Title="From" TData="DateTime">
-            <TimePicker TValue="DateTime?" @bind-Value="@context.From" OnChange="this.OnDateValueChanged" />
-          </Column>
-          <Column Title="Category" DataIndex="@nameof(context.Category)" TData="string">
-            <Select DataSource="@this.CategoryList"
-                    @bind-Value="@this.selectedCategoryValue"
-                    LabelName="@nameof(Category.CategorySymbol)"
-                    ValueName="@nameof(Category.CategorySymbol)"
-                    DefaultActiveFirstItem="false"
-                    EnableSearch
-                    OnSelectedItemChanged="this.OnSelectedCategoryChangedHandler">
-            </Select>
-          </Column>
-          <ActionColumn Title="Action">
-            <Popconfirm Title="Sure to delete?"
-                        OnConfirm="()=> this.Delete(context.Id)"
-                        OkText="Yes"
-                        CancelText="No">
-              <Button Danger>Delete</Button>
-            </Popconfirm>
-          </ActionColumn>
-        </Table>
-      </ChildContent>
-    </Panel>
     <Panel Header="Attachments" Key="3">
       <ChildContent>
 

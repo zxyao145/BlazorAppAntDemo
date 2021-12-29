@@ -52,7 +52,6 @@ namespace BlazorAppAntDemo.Pages
         Id = i + 1,
         Name = "John " + i,
         From = DateTime.Today + new TimeSpan(7, 30, 0),
-        Category = this.selectedCategoryValue,
       });
 
       this.DiaryRecord.Employees = new List<Personell>(this.PersonellData);
@@ -65,9 +64,9 @@ namespace BlazorAppAntDemo.Pages
       this.PersonellData = this.PersonellData.Where(d => d.Id != id).ToList();
     }
 
-    private void OnSelectedCategoryChangedHandler(Category value)
+    private void OnSelectedCategoryChangedHandler(Category category)
     {
-      this.selectedCategoryValue = value.CategoryName;
+      this.selectedCategoryValue = category.CategorySymbol;
     }
 
     private void OnDateValueChanged()
