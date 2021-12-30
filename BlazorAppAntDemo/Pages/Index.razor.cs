@@ -13,6 +13,8 @@ namespace BlazorAppAntDemo.Pages
     private bool isDialogVisible;
     private DateTime SelectedDate { get; set; }
 
+    string editorValue { get; set; } = "I hope you see me :)";
+
     public Index()
     {
       this.DiaryRecordModel = new DiaryRecord();

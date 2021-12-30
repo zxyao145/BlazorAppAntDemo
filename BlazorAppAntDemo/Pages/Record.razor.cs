@@ -24,6 +24,10 @@ namespace BlazorAppAntDemo.Pages
     private byte[] profilePictureByteArray;
     private bool loading;
 
+    Fruit fruit = new Models.Fruit();
+
+    string editorValue { get; set; } = "I hope you see me :)";
+
     [Parameter] public DiaryRecord DiaryRecord { get; set; }
 
     public Record()
