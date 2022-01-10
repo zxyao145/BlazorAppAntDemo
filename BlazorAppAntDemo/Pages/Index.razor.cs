@@ -19,6 +19,12 @@ namespace BlazorAppAntDemo.Pages
       this.RecordModel.Date = DateTime.Now;
     }
 
+    private void OnDialogOpen()
+    {
+      this.RecordModel = new RecordModel();
+      this.isDialogVisible = true;
+    }
+
     private async Task OnCreateNewDiaryRecord()
     {
       if (true)
@@ -44,7 +50,7 @@ namespace BlazorAppAntDemo.Pages
         this.RecordModel = new RecordModel
         {
           Id = this.RecordModel.Id,
-          Title = this.RecordModel.Title,
+          Title = "My title",
           Description = "My text",
           Employees = this.RecordModel.Employees,
           Date = this.SelectedDate,
