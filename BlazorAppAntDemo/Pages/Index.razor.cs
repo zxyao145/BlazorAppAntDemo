@@ -51,7 +51,7 @@ namespace BlazorAppAntDemo.Pages
         {
           Id = this.RecordModel.Id,
           Title = "My title",
-          Description = "My text",
+          Description = "<p>My <strong>text</strong></p>",
           Employees = this.RecordModel.Employees,
           Date = this.SelectedDate,
         };

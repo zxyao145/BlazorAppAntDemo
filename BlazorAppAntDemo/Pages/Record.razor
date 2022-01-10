@@ -10,8 +10,8 @@
         <Input @bind-Value="@this.RecordModel.Title" />
       </FormItem>
       <FormItem Label="Description">
-        <CkEditor5 @bind-Value="@this.RecordModel.Description" />
-        @*<EditorComponent EditorHeight="200px" EditorWidth="100%" @bind-Value="@this.DiaryRecord.Description"></EditorComponent>*@
+        @*<CkEditor5 EditorHeight="200px" @bind-Value="@this.RecordModel.Description"/>*@
+        <EditorComponent EditorHeight="200px" @bind-EditorValue="@this.RecordModel.Description"></EditorComponent>
       </FormItem>
       <FormItem Label="Date" NoStyle>
         <DatePicker @bind-Value="@this.RecordModel.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
