@@ -18,7 +18,7 @@ Welcome to your new app.
 </Space>
 <Space>
   <SpaceItem>
-    <Button Type="primary" OnClick="@(()=>OnEditDiaryRecord())">
+    <Button Type="primary" OnClick="@(()=>OnEditRecord())">
       Edit Record
     </Button>
   </SpaceItem>
@@ -35,11 +35,11 @@ Welcome to your new app.
        Footer="null"
        Draggable="@(true)"
        OnCancel="(e)=>{this.isDialogVisible = false;}">
-  <Form Model="this.DiaryRecordModel"
+  <Form Model="this.RecordModel"
         Layout="@FormLayout.Vertical"
         OnFinish="(e) => this.OnCreateNewDiaryRecord()">
     <FormItem>
-      <Record DiaryRecord=this.DiaryRecordModel />
+      <Record DiaryRecord=this.RecordModel />
     </FormItem>
     <FormItem WrapperColOffset="8" WrapperColSpan="16">
       <Button Type="@ButtonType.Primary" HtmlType="submit">

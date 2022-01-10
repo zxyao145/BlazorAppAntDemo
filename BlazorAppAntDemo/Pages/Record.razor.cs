@@ -13,33 +13,17 @@ namespace BlazorAppAntDemo.Pages
 
     private string ExpandIconPosition { get; set; }
     private int i = 1;
-    private List<Category> CategoryList { get; set; } 
-    private string selectedCategoryValue;
-    private List<Personell> PersonellData { get; set; }
-    private List<string> ImgUrls { get; set; }
-    private List<FileData> FileData { get; set; }
+    private List<Category> CategoryList { get; set; } = new List<Category>();
+    private List<Personell> PersonellData { get; set; } = new List<Personell>();
+    private List<string> ImgUrls { get; set; } = new List<string>();
+    private List<FileData> FileData { get; set; } = new List<FileData>();
 
     private string imageUrl;
     private int maxFileSize;
     private byte[] profilePictureByteArray;
     private bool loading;
 
-    Fruit fruit = new Models.Fruit();
-
-    string editorValue { get; set; } = "I hope you see me :)";
-
-    [Parameter] public DiaryRecord DiaryRecord { get; set; }
-
-    public Record()
-    {
-      this.ExpandIconPosition = "left";
-      this.PersonellData = new List<Personell>();
-      this.CategoryList = new List<Category>();
-      this.ImgUrls = new List<string>();
-      this.FileData = new List<FileData>();
-      this.maxFileSize = 400000;
-    }
-
+    [Parameter] public Models.RecordModel DiaryRecord { get; set; }
 
     protected override void OnInitialized()
     {
@@ -47,6 +31,9 @@ namespace BlazorAppAntDemo.Pages
       this.CategoryList.Add(new Category { CategoryName = "CategoryB", CategorySymbol = "B" });
       this.CategoryList.Add(new Category { CategoryName = "CategoryC", CategorySymbol = "C" });
       this.CategoryList.Add(new Category { CategoryName = "CategoryD", CategorySymbol = "D" });
+
+      this.ExpandIconPosition = "left";
+      this.maxFileSize = 400000;
     }
 
     private void AddNew()
@@ -61,21 +48,6 @@ namespace BlazorAppAntDemo.Pages
       this.DiaryRecord.Employees = new List<Personell>(this.PersonellData);
 
       i++;
-    }
-
-    private void Delete(int id)
-    {
-      this.PersonellData = this.PersonellData.Where(d => d.Id != id).ToList();
-    }
-
-    private void OnSelectedCategoryChangedHandler(Category category)
-    {
-      this.selectedCategoryValue = category.CategorySymbol;
-    }
-
-    private void OnDateValueChanged()
-    {
-
     }
 
     private void OnDateSelected(DateTimeChangedEventArgs args)

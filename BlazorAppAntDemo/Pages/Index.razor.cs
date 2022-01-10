@@ -9,33 +9,26 @@ namespace BlazorAppAntDemo.Pages
     [Inject]
     public MessageService Message { get; set; }
 
-    private DiaryRecord DiaryRecordModel { get; set; }
+    private RecordModel RecordModel { get; set; }
     private bool isDialogVisible;
     private DateTime SelectedDate { get; set; }
 
-    string editorValue { get; set; } = "I hope you see me :)";
-
-    public Index()
-    {
-      this.DiaryRecordModel = new DiaryRecord();
-      this.DiaryRecordModel.Date = DateTime.Now;
-    }
-
     protected override void OnInitialized()
     {
-
+      this.RecordModel = new RecordModel();
+      this.RecordModel.Date = DateTime.Now;
     }
 
     private async Task OnCreateNewDiaryRecord()
     {
       if (true)
       {
-        this.DiaryRecordModel = new DiaryRecord
+        this.RecordModel = new RecordModel
         {
-          Id = this.DiaryRecordModel.Id,
-          Title = this.DiaryRecordModel.Title,
-          Description = this.DiaryRecordModel.Description,
-          Employees = this.DiaryRecordModel.Employees,
+          Id = this.RecordModel.Id,
+          Title = this.RecordModel.Title,
+          Description = this.RecordModel.Description,
+          Employees = this.RecordModel.Employees,
           Date = this.SelectedDate,
         };
 
@@ -44,16 +37,16 @@ namespace BlazorAppAntDemo.Pages
       isDialogVisible = false;
     }
 
-    private async Task OnEditDiaryRecord()
+    private async Task OnEditRecord()
     {
       if (true)
       {
-        this.DiaryRecordModel = new DiaryRecord
+        this.RecordModel = new RecordModel
         {
-          Id = this.DiaryRecordModel.Id,
-          Title = this.DiaryRecordModel.Title,
+          Id = this.RecordModel.Id,
+          Title = this.RecordModel.Title,
           Description = "My text",
-          Employees = this.DiaryRecordModel.Employees,
+          Employees = this.RecordModel.Employees,
           Date = this.SelectedDate,
         };
 

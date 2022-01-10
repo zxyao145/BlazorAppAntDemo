@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorAppAntDemo.Models
 {
-  public class DiaryRecord
+  public class RecordModel
   {
     public Guid Id { get; set; }
     public string Title { get; set; }
