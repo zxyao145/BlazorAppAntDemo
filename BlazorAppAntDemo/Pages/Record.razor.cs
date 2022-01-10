@@ -23,7 +23,7 @@ namespace BlazorAppAntDemo.Pages
     private byte[] profilePictureByteArray;
     private bool loading;
 
-    [Parameter] public Models.RecordModel DiaryRecord { get; set; }
+    [Parameter] public RecordModel RecordModel { get; set; }
 
     protected override void OnInitialized()
     {
@@ -45,14 +45,14 @@ namespace BlazorAppAntDemo.Pages
         From = DateTime.Today + new TimeSpan(7, 30, 0),
       });
 
-      this.DiaryRecord.Employees = new List<Personell>(this.PersonellData);
+      this.RecordModel.Employees = new List<Personell>(this.PersonellData);
 
       i++;
     }
 
     private void OnDateSelected(DateTimeChangedEventArgs args)
     {
-      this.DiaryRecord.Date = args.Date;
+      this.RecordModel.Date = args.Date;
     }
 
     private void Callback(string[] keys)

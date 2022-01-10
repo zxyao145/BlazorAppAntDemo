@@ -7,14 +7,14 @@
             ExpandIcon="caret-right">
     <Panel Header="Basic information" Key="1">
       <FormItem Label="Record title" NoStyle>
-        <Input @bind-Value="@this.DiaryRecord.Title" />
+        <Input @bind-Value="@this.RecordModel.Title" />
       </FormItem>
       <FormItem Label="Description">
-        <CkEditor5 @bind-Value="@this.DiaryRecord.Description" />
+        <CkEditor5 @bind-Value="@this.RecordModel.Description" />
         @*<EditorComponent EditorHeight="200px" EditorWidth="100%" @bind-Value="@this.DiaryRecord.Description"></EditorComponent>*@
       </FormItem>
       <FormItem Label="Date" NoStyle>
-        <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
+        <DatePicker @bind-Value="@this.RecordModel.Date" ShowTime="@true" OnChange="this.OnDateSelected" />
       </FormItem>
     </Panel>
     <Panel Header="Attachments" Key="3">
