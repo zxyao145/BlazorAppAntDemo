@@ -17,18 +17,26 @@ Welcome to your new app.
   </SpaceItem>
 </Space>
 <Space>
+  <SpaceItem>
+    <Button Type="primary" OnClick="@(()=>OnEditDiaryRecord())">
+      Edit Record
+    </Button>
+  </SpaceItem>
+</Space>
+<Space>
   <Button Type="default" OnClick="this.Success">
     Success
   </Button>
 </Space>
 
 <Modal Title="Create new record"
-       Style="width:90%"
+       Style="width:80%"
        Visible="@this.isDialogVisible"
        Footer="null"
        Draggable="@(true)"
        OnCancel="(e)=>{this.isDialogVisible = false;}">
   <Form Model="this.DiaryRecordModel"
+        Layout="@FormLayout.Vertical"
         OnFinish="(e) => this.OnCreateNewDiaryRecord()">
     <FormItem>
       <Record DiaryRecord=this.DiaryRecordModel />

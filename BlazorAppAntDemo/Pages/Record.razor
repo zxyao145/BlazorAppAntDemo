@@ -9,11 +9,9 @@
       <FormItem Label="Record title" NoStyle>
         <Input @bind-Value="@this.DiaryRecord.Title" />
       </FormItem>
-      <FormItem Label="Description" NoStyle>
-@*        <EditForm Model="fruit">
-          <CkEditor5 @bind-Value="fruit.Description" />
-        </EditForm>*@
-        <EditorComponent EditorHeight="200px" EditorWidth="100%" @bind-EditorValue="@editorValue"></EditorComponent>
+      <FormItem Label="Description">
+        <CkEditor5 @bind-Value="@this.DiaryRecord.Description" />
+        @*<EditorComponent EditorHeight="200px" EditorWidth="100%" @bind-Value="@this.DiaryRecord.Description"></EditorComponent>*@
       </FormItem>
       <FormItem Label="Date" NoStyle>
         <DatePicker @bind-Value="@this.DiaryRecord.Date" ShowTime="@true" OnChange="this.OnDateSelected" />

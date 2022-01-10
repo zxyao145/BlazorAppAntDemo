@@ -7,6 +7,7 @@
 				.create(document.getElementById(id), {
 
 					toolbar: {
+						shouldNotGroupWhenFull: true,
 						items: [
 							'heading',
 							'|',

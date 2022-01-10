@@ -44,6 +44,24 @@ namespace BlazorAppAntDemo.Pages
       isDialogVisible = false;
     }
 
+    private async Task OnEditDiaryRecord()
+    {
+      if (true)
+      {
+        this.DiaryRecordModel = new DiaryRecord
+        {
+          Id = this.DiaryRecordModel.Id,
+          Title = this.DiaryRecordModel.Title,
+          Description = "My text",
+          Employees = this.DiaryRecordModel.Employees,
+          Date = this.SelectedDate,
+        };
+
+        await InvokeAsync(this.StateHasChanged);
+      }
+      isDialogVisible = true;
+    }
+
     private async Task Success()
     {
       await this.Message.Success("This is a success message");
