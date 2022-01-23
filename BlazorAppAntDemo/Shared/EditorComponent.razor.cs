@@ -39,6 +39,8 @@ namespace BlazorAppAntDemo.Shared
     [JSInvokable]
     public async Task OnEditorChanged(string data)
     {
+      this.EditorValue = data;
+      this.StateHasChanged();
       await EditorValueChanged.InvokeAsync(data);
     }
 

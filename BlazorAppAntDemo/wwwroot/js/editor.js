@@ -37,10 +37,17 @@ function CreateEditor(editorId, defaultValue, height, dotNetReference) {
         writer.setStyle('height', height, editor.editing.view.document.getRoot());
       });
       editor.setData(defaultValue);
+
       editor.model.document.on('change:data', () => {
         let data = editor.getData();
+        const el = document.createElement('div');
+        el.innerHTML = data;
+        if (el.innerText.trim() == '')
+          data = null;
+
         dotNetReference.invokeMethodAsync('OnEditorChanged', data);
       });
+
     })
 
     .catch(error => {
