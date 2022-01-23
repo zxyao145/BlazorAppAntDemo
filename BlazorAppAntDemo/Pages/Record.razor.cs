@@ -13,7 +13,6 @@ namespace BlazorAppAntDemo.Pages
 
     private string ExpandIconPosition { get; set; }
     private int i = 1;
-    private List<Category> CategoryList { get; set; } = new List<Category>();
     private List<Personell> PersonellData { get; set; } = new List<Personell>();
     private List<string> ImgUrls { get; set; } = new List<string>();
     private List<FileData> FileData { get; set; } = new List<FileData>();
@@ -27,27 +26,9 @@ namespace BlazorAppAntDemo.Pages
 
     protected override void OnInitialized()
     {
-      this.CategoryList.Add(new Category { CategoryName = "CategoryA", CategorySymbol = "A" });
-      this.CategoryList.Add(new Category { CategoryName = "CategoryB", CategorySymbol = "B" });
-      this.CategoryList.Add(new Category { CategoryName = "CategoryC", CategorySymbol = "C" });
-      this.CategoryList.Add(new Category { CategoryName = "CategoryD", CategorySymbol = "D" });
-
+      this.RecordModel.Date = DateTime.Now;
       this.ExpandIconPosition = "left";
       this.maxFileSize = 400000;
-    }
-
-    private void AddNew()
-    {
-      this.PersonellData.Add(new Personell
-      {
-        Id = i + 1,
-        Name = "John " + i,
-        From = DateTime.Today + new TimeSpan(7, 30, 0),
-      });
-
-      this.RecordModel.Employees = new List<Personell>(this.PersonellData);
-
-      i++;
     }
 
     private void OnDateSelected(DateTimeChangedEventArgs args)

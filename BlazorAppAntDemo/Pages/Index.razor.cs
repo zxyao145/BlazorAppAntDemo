@@ -11,7 +11,7 @@ namespace BlazorAppAntDemo.Pages
 
     private RecordModel RecordModel { get; set; }
     private bool isDialogVisible;
-    private DateTime SelectedDate { get; set; }
+    private List<RecordModel> RecordList { get; set; } = new List<RecordModel>();
 
     protected override void OnInitialized()
     {
@@ -31,12 +31,14 @@ namespace BlazorAppAntDemo.Pages
       {
         this.RecordModel = new RecordModel
         {
-          Id = this.RecordModel.Id,
+          Id = Guid.NewGuid(),
           Title = this.RecordModel.Title,
           Description = this.RecordModel.Description,
           Employees = this.RecordModel.Employees,
-          Date = this.SelectedDate,
+          Date = this.RecordModel.Date,
         };
+
+        this.RecordList.Add(this.RecordModel);
 
         await InvokeAsync(this.StateHasChanged);
       }
@@ -53,7 +55,7 @@ namespace BlazorAppAntDemo.Pages
           Title = "My title",
           Description = "<p>My <strong>text</strong></p>",
           Employees = this.RecordModel.Employees,
-          Date = this.SelectedDate,
+          Date = this.RecordModel.Date,
         };
 
         await InvokeAsync(this.StateHasChanged);

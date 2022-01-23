@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorAppAntDemo.Models
 
 <PageTitle>Index</PageTitle>
 
@@ -29,11 +30,23 @@ Welcome to your new app.
   </Button>
 </Space>
 
+<br />
+<br />
+
+<Table TItem="RecordModel" DataSource="@this.RecordList">
+  <Column Title="Id" @bind-Field="@context.Id" Sortable />
+  <Column Title="Title" @bind-Field="@context.Title" Sortable />
+  <Column Title="Description" @bind-Field="@context.Description" Sortable />
+  <Column Title="Date" @bind-Field="@context.Date" Sortable />
+</Table>
+
 <Modal Title="Create new record"
        Style="width:80%"
+       BodyStyle="height:65vh;overflow-y:auto;"
        Visible="@this.isDialogVisible"
-       Footer="null"
        Draggable="@(true)"
+       OkText="@("Submit")"
+       OnOk="this.OnCreateNewDiaryRecord"
        OnCancel="(e)=>{this.isDialogVisible = false;}">
   <Form Model="this.RecordModel"
         Layout="@FormLayout.Vertical"
@@ -41,11 +54,11 @@ Welcome to your new app.
     <FormItem>
       <Record RecordModel=this.RecordModel />
     </FormItem>
-    <FormItem WrapperColOffset="8" WrapperColSpan="16">
+    @*    <FormItem WrapperColOffset="8" WrapperColSpan="16">
       <Button Type="@ButtonType.Primary" HtmlType="submit">
-        Submit
+      Submit
       </Button>
       <Button OnClick="(e)=>{this.isDialogVisible = false;}">Cancel</Button>
-    </FormItem>
+      </FormItem>*@
   </Form>
 </Modal>
