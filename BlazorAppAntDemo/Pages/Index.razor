@@ -46,9 +46,10 @@ Welcome to your new app.
        Visible="@this.isDialogVisible"
        Draggable="@(true)"
        OkText="@("Submit")"
-       OnOk="this.OnCreateNewDiaryRecord"
+       OnOk="this.OnSubmitForm"
        OnCancel="(e)=>{this.isDialogVisible = false;}">
-  <Form Model="this.RecordModel"
+  <Form @ref="@_form" 
+        Model="this.RecordModel"
         Layout="@FormLayout.Vertical"
         OnFinish="(e) => this.OnCreateNewDiaryRecord()">
     <FormItem>

@@ -6,6 +6,8 @@ namespace BlazorAppAntDemo.Pages
 {
   public partial class Index
   {
+    private Form<RecordModel> _form;
+
     [Inject]
     public MessageService Message { get; set; }
 
@@ -25,17 +27,22 @@ namespace BlazorAppAntDemo.Pages
       this.isDialogVisible = true;
     }
 
+    private void OnSubmitForm()
+    {
+      _form.Submit();
+    }
+
     private async Task OnCreateNewDiaryRecord()
     {
       if (true)
       {
         this.RecordModel = new RecordModel
         {
-          Id = Guid.NewGuid(),
-          Title = this.RecordModel.Title,
-          Description = this.RecordModel.Description,
-          Employees = this.RecordModel.Employees,
-          Date = this.RecordModel.Date,
+            Id = Guid.NewGuid(),
+            Title = this.RecordModel.Title,
+            Description = this.RecordModel.Description,
+            Employees = this.RecordModel.Employees,
+            Date = this.RecordModel.Date,
         };
 
         this.RecordList.Add(this.RecordModel);
